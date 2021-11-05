@@ -10,12 +10,14 @@ services:
       - specifdb-config:/data/configdb
       - ./mongodb-init-data:/mongodb_specif_data
       - ./mongodb-init-data/init-mongodb.sh:/docker-entrypoint-initdb.d/init-mongodb.sh
+   
   api:
     build: /SpecIf-Backend/Dockerfile
     ports:
       - "888:888"
     environment:
       - "dataConnection=mongodb://mongo:27017"
+ 
     
      
 volumes:
