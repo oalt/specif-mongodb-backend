@@ -1,12 +1,14 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0-buster-slim
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim 
-WORKDIR /app
-ENV ASPNETCORE_URLS https://localhost:888
-ENV ASPNETCORE_URLS http://localhost:887
+ENV ASPNETCORE_URLS=https://+:888;http://+:887;
+ENV ASPNETCORE_HTTPS_PORT=888
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password=
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/https/MDD4All.SpecIf.Microservice.pfx
 
-COPY ["/src/MDD4All.SpecIF.Microservice/bin/Release/netcoreapp3.1", "netcoreapp3.1/"]
+ADD ["SpecIF-Backend/src/MDD4All.SpecIF.Microservice/bin/Debug/netcoreapp3.1/publish", "/app/"]
+COPY ["/MDD4All.SpecIf.Microservice.pfx", "/root/.aspnet/https/MDD4All.SpecIf.Microservice.pfx"]
 
+WORKDIR /app/
 
-WORKDIR /netcoreapp3.1/publish/
-ENTRYPOINT ["dotnet", "MDD4All.SpecIf.Microservice"]
+ENTRYPOINT ["./MDD4All.SpecIf.Microservice","mongodb", "true"]
+
