@@ -1,0 +1,39 @@
+version: '3'
+services:
+  specifdb:
+    image: mongo:4.2.2
+    container_name: mongodb2
+    ports:
+      - "27017:27017"
+    volumes:
+      - specifdb:/data/db
+      - specifdb-config:/data/configdb
+   
+   
+  api:    
+    image: ghcr.io/nicholas-mc/specif_backend:2022.081.16
+    container_name: specif_backend
+   
+    ports:
+      - "888:888"
+      - "887:887"
+     
+    environment:
+      - "dataSource=MongoDB"
+      - "dataConnection=mongodb://mongodb2:27017"      
+      - "metadataReadAuthRequired=false"
+      - "httpOnly=false"
+      - "httpRedirection=true"
+      - "EaConnectionString="
+      - "httpsHosted=true"
+      - "https_port=888"
+      - "http_port=887"
+      - "ASPNETCORE_URLS=https://localhost:888"
+      - "ASPNETCORE_URLS=http://localhost:887"     
+      - "ASPNETCORE_Kestrel__Certificates__Default__Password=YourSecurePassword"
+      - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx"
+      
+      
+volumes:
+  specifdb: {}  
+  specifdb-config: {}

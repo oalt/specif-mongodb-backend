@@ -1,6 +1,0 @@
-[submodule "SpecIF-Backend"]
-	path = SpecIF-Backend
-	url = https://github.com/oalt/SpecIF-Backend.git
-[submodule "SpecIF"]
-	path = SpecIF
-	url = https://github.com/GfSE/SpecIF.git

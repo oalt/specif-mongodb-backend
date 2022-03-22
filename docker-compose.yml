@@ -2,29 +2,38 @@ version: '3'
 services:
   specifdb:
     image: mongo:4.2.2
-    container_name: mongo
+    container_name: mongodb2
     ports:
       - "27017:27017"
     volumes:
       - specifdb:/data/db
       - specifdb-config:/data/configdb
-      - ./mongodb-init-data:/mongodb_specif_data
-      - ./mongodb-init-data/init-mongodb.sh:/docker-entrypoint-initdb.d/init-mongodb.sh
+   
    
   api:    
-    build: .
-    container_name: specif_backend
+    image: ghcr.io/nicholas-mc/specif_backend:2022.081.16
+    container_name: specif_backend_test
     ports:
       - "888:888"
       - "887:887"
-      - "555:555"
-      - "554:554"
-
-
+     
     environment:
-      - "dataConnection=mongodb://mongo:27017"
- 
-    
+      - "dataConnection=mongodb://mongodb2:27017"
+  # Add your own certificate here    
+  #   - "ASPNETCORE_Kestrel__Certificates__Default__Password="
+  #   - "ASPNETCORE_Kestrel__Certificates__Default__Path="
+  
+  # Adjust other options if needed
+  #   - "dataSource=MongoDB"       
+  #   - "metadataReadAuthRequired=false"
+  #   - "httpOnly=false"
+  #   - "httpRedirection=true"
+  #   - "EaConnectionString="
+  #   - "httpsHosted=true"
+  #   - "https_port=888"
+  #   - "http_port=887"
+  #   - "ASPNETCORE_URLS=https://localhost:888"
+  #   - "ASPNETCORE_URLS=http://localhost:887"   
      
 volumes:
   specifdb: {}  
