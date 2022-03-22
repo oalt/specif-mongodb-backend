@@ -11,7 +11,7 @@ services:
    
    
   api:    
-    image: ghcr.io/nicholas-mc/specif_backend:2022.081.16
+    image: ghcr.io/nicholas-mc/specif_backend:2022.081.19
     container_name: specif_backend
     entrypoint: ./MDD4All.SpecIF.Microservice 
     ports:
@@ -31,7 +31,7 @@ services:
       - "ASPNETCORE_URLS=https://localhost:888"
       - "ASPNETCORE_URLS=http://localhost:887"
       - "ASPNETCORE_Kestrel__Certificates__Default__Password=YourSecurePassword"
-      - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx"
+      - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/specif.pfx"
       
  
     
