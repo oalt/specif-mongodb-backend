@@ -2,16 +2,15 @@ version: '3'
 services:
   specifdb:
     image: mongo:4.2.2
-    container_name: mongodb2
+    container_name: specif_mongodb
     ports:
       - "27017:27017"
     volumes:
       - specifdb:/data/db
       - specifdb-config:/data/configdb
-   
-   
+  
   api:    
-    image: ghcr.io/nicholas-mc/specif_backend:2022.081.19
+    image: ghcr.io/oalt/specif_backend:2022.292.22
     container_name: specif_backend
     entrypoint: ./MDD4All.SpecIF.Microservice 
     ports:
@@ -20,7 +19,7 @@ services:
      
     environment:
       - "dataSource=MongoDB"
-      - "dataConnection=mongodb://mongodb2:27017"      
+      - "dataConnection=mongodb://specif_mongodb:27017"      
       - "metadataReadAuthRequired=true"
       - "httpOnly=false"
       - "httpRedirection=true"
