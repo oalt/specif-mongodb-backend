@@ -18,7 +18,7 @@ After Docker is installed and running, you can use the use the batch scripts pro
 
 There are two different configurations provided. One allows an annonymous read of the SpecIF metaadata and the other one requires authorization. The Docker Compose files for these two configurations are located in different folders below the `/compose/` folder.
 
-Before you can startup, you have to **clone the repository to your local disk**. Then open a command line window to rund either the batch scripts or the docker compose command.
+Before you can startup, you have to **clone the repository to your local disk**. Then open a command line window to run either the batch scripts or the docker compose command.
 
 ### Option 1: Startup with batch script
 
@@ -39,7 +39,7 @@ Now the containers are created and started.
 
 ## Import data after startup
 
-Now the SpecIF-Backend service and the MongoDB database should run. You can now open a browser and open the URL `https://localhost:888` to show the hompepage of the API.
+Now the SpecIF-Backend service and the MongoDB database should run. You can now open a browser and open the URL `https://localhost:888` to show the homepage of the API.
 
 ![API homepage](./documentation/images/Homepage.PNG)
 
@@ -47,7 +47,7 @@ Because a self-signed TSL certificate is used by default, the browser shows a se
 
 ### Data import
 
-The API implementation provides a user interface to import SpecIF data from SpecIF files. When the API is started the first time, no data is contained in the data base. You can then import SpecIF data from SpecIF files to add them to the data base.
+The API implementation provides a user interface to import SpecIF data from SpecIF files. When the API is started the first time, no data is contained in the data base. You can then import SpecIF data from SpecIF files to add them to your data base.
 
 A good starting point is to import the classes and data types defined with a SpecIF release. You can find the following metadata as files here:
 
@@ -61,7 +61,7 @@ or the current development of SpecIF 1.2 metatypes (backward compatible to 1.1):
 
 * [SpecIF 1.2 Metatypes - non normative](https://raw.githubusercontent.com/GfSE/SpecIF-Class-Definitions/dev/_Packages/SpecIF-Classes-1_2_non_normative.specif)
 
-To import a SpecIF file navigate to the import page by clicking on *SpecIF Upload*:
+To import a SpecIF file, navigate to the import page by clicking on *SpecIF Upload*:
 
 ![Navigate to SpecIF Upload](./documentation/images/NavigateToUpload.PNG)
 
@@ -69,7 +69,7 @@ Now the upload page appears:
 
 ![Upload page](./documentation/images/UploadPage.PNG)
 
-You can now select a file for upload an confirm the upload process with the Upload button.
+You can now select a file for upload an confirm the upload process with the *Upload* button.
 
 ## Use the Swagger page to test and play around
 
