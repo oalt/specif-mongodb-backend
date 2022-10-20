@@ -11,7 +11,7 @@ services:
    
    
   api:    
-    image: ghcr.io/nicholas-mc/specif_backend:2022.081.19
+    image: ghcr.io/oalt/specif_backend:2022.293.24
     container_name: specif_backend_test
     ports:
       - "888:888"

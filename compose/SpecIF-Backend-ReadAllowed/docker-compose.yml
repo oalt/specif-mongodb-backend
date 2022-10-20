@@ -8,11 +8,11 @@ services:
     volumes:
       - specifdb:/data/db
       - specifdb-config:/data/configdb
-  
+   
   api:    
-    image: ghcr.io/oalt/specif_backend:2022.292.22
+    image: ghcr.io/oalt/specif_backend:2022.293.24
     container_name: specif_backend
-    entrypoint: ./MDD4All.SpecIF.Microservice 
+   
     ports:
       - "888:888"
       - "887:887"
@@ -20,7 +20,7 @@ services:
     environment:
       - "dataSource=MongoDB"
       - "dataConnection=mongodb://specif_mongodb:27017"      
-      - "metadataReadAuthRequired=true"
+      - "metadataReadAuthRequired=false"
       - "httpOnly=false"
       - "httpRedirection=true"
       - "EaConnectionString="
@@ -28,13 +28,11 @@ services:
       - "https_port=888"
       - "http_port=887"
       - "ASPNETCORE_URLS=https://localhost:888"
-      - "ASPNETCORE_URLS=http://localhost:887"
+      - "ASPNETCORE_URLS=http://localhost:887"     
       - "ASPNETCORE_Kestrel__Certificates__Default__Password=YourSecurePassword"
       - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/specif.pfx"
       
- 
-    
-     
+      
 volumes:
   specifdb: {}  
   specifdb-config: {}
